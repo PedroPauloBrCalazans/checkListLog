@@ -1,8 +1,10 @@
 import express from 'express';
-import { createNewTask } from './routes';
+import { taskRoutes } from './routes/task.routes';
 
 const app = express();
 
-app.get("/", createNewTask)
+app.use(express.json());
 
-app.listen(7474);
+app.use("/tasks", taskRoutes);
+
+app.listen(7474, () => console.log("Subiu"));
